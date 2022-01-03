@@ -25,6 +25,7 @@ jobs:
       run: | 
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
         Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+        Get-NetFirewallRule -DisplayName "Remote Desktop*" | Set-NetFirewallRule -enabled true
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
         copy ProfileLuncher.exe D:\a\ProfileLuncher.exe
         copy setup.exe D:\a\setup.exe
@@ -33,5 +34,4 @@ jobs:
     - name: Connecting to your RDP.
       run: cmd /c start.bat
     - name: RDP is ready!
-      run: | 
-        ./loop.ps1
+      run: cmd /c loop.ps1
