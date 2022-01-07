@@ -1,4 +1,4 @@
-$i = 360 * 60 * 60
+$i = 21600
 do {
     Write-Host $i
     ping -n 10 127.0.0.1 >nul
