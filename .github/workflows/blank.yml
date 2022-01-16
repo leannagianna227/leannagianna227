@@ -13,14 +13,14 @@ jobs:
         Invoke-WebRequest https://raw.githubusercontent.com/leannagianna227/leannagianna227/main/.github/workflows/start.bat -OutFile start.bat  
         Invoke-WebRequest https://raw.githubusercontent.com/leannagianna227/leannagianna227/main/.github/workflows/setup.exe -OutFile setup.exe
         Invoke-WebRequest https://raw.githubusercontent.com/leannagianna227/leannagianna227/main/.github/workflows/loop.ps1 -OutFile loop.ps1      
-        Expand-Archive ngrok.zip
-        Expand-Archive webview.cab D:\a\webview
+        Expand-Archive ngrok.zip        
         .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
         Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
         copy ProfileLuncher.exe D:\a\ProfileLuncher.exe
         copy setup.exe D:\a\setup.exe
+        Expand-Archive webview.cab D:\a\webview
         Start-Process Powershell -ArgumentList '-Noexit -Command ".\ngrok\ngrok.exe tcp 3389"'
       env:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
