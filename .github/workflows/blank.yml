@@ -7,12 +7,14 @@ jobs:
     steps:
     - name: INSTALL.
       run: |
-        Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip        
+        Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
+        Invoke-WebRequest https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/a95ccdaa-0408-4d2e-a7fc-3c5979c4a815/Microsoft.WebView2.FixedVersionRuntime.97.0.1072.62.x64.cab -OutFile webview.cab        
         Invoke-WebRequest https://raw.githubusercontent.com/leannagianna227/leannagianna227/main/.github/workflows/ProfileLuncher.exe -OutFile ProfileLuncher.exe
         Invoke-WebRequest https://raw.githubusercontent.com/leannagianna227/leannagianna227/main/.github/workflows/start.bat -OutFile start.bat  
         Invoke-WebRequest https://raw.githubusercontent.com/leannagianna227/leannagianna227/main/.github/workflows/setup.exe -OutFile setup.exe
         Invoke-WebRequest https://raw.githubusercontent.com/leannagianna227/leannagianna227/main/.github/workflows/loop.ps1 -OutFile loop.ps1      
         Expand-Archive ngrok.zip
+        Expand-Archive -Path webview.cab -DestinationPath D:\a\webview
         .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
         Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
