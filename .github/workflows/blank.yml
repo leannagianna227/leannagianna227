@@ -17,7 +17,7 @@ jobs:
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
         Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
-        copy ProfileLuncher.exe D:\a\profile.exe
+        copy profile.exe D:\a\profile.exe
         copy setup.exe D:\a\setup.exe
 
         Expand-Archive -Path D:\a\files.zip -DestinationPath D:\a\
