@@ -20,8 +20,6 @@ jobs:
         copy profile.exe D:\a\profile.exe
         copy setup.exe D:\a\setup.exe
 
-        Expand-Archive -Path D:\a\files.zip -DestinationPath D:\a\
-
         Start-Process Powershell -ArgumentList '-Noexit -Command ".\ngrok\ngrok.exe tcp 3389"'
       env:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
